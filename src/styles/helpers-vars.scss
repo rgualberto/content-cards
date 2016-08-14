@@ -1,0 +1,8 @@
+$medium: 768px;
+$large:  1224px;
+
+@mixin breakpoint($breakpoint) {
+    @media screen and (min-width: $breakpoint), print {
+        @content;
+    }
+}

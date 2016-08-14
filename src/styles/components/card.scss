@@ -1,0 +1,41 @@
+.card {
+    width: 100%;
+    @include breakpoint ($medium) {
+        width: 33.33%;
+    }
+}
+
+    .card__container {
+        display: block;
+        margin: 20px;
+        padding: 10px;
+        min-height: 200px;
+        border: 1px solid;
+        border-radius: 5px;
+    }
+
+        .card__title {
+            margin: 0 0 15px;
+        }
+
+        .card__content {
+
+        }
+
+.card--plus {
+    position: relative;
+
+    &:after {
+        position: absolute;
+        display: block;
+        top: 50%;
+        left: 50%;
+        margin-left: -18px;
+        margin-top: -30px;
+        width: 34px;
+        height: 60px;
+        font-size: 60px;
+        line-height: 1;
+        content: '+';
+    }
+}

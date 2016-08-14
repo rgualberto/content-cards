@@ -1,0 +1,8 @@
+.page-main {
+    padding: 10px;
+
+    @include breakpoint($medium) {
+        margin: 0 auto;
+        max-width: 1100px;
+    }
+}
