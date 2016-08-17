@@ -3,8 +3,8 @@ import TodoCard from './TodoCard';
 
 class TodoList extends React.Component {
   buildTodoItems() {
-    return this.props.todoCards.map(function(card) {
-          return <TodoCard cardData={card}/>;
+    return this.props.todoCards.map(function(card, i) {
+          return <TodoCard cardData={card} key={i}/>;
         });
   }
 

@@ -12,8 +12,8 @@ class TodoCard extends React.Component {
           <h2 className="card__title">{cardData.title}</h2>
           <div className="card__content">
             <ul>
-              {cardData.todos.map(function(todo) {
-                return <li>{todo}</li>;
+              {cardData.todos.map(function(todo, i) {
+                return <li key={i}>{todo}</li>;
               })}
             </ul>
           </div>
@@ -24,7 +24,7 @@ class TodoCard extends React.Component {
 }
 
 TodoCard.propTypes = {
-  todos: PropTypes.object.isRequired
+  cardData: PropTypes.object.isRequired
 };
 
 export default TodoCard;
