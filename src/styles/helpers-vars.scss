@@ -1,8 +1,21 @@
+/* colors */
+$white: #ffffff;
+$black: #000000;
+$gray: #b1b1b1;
+$very-light-gray: #e5e5e5;
+
+/* breakpoints */
 $medium: 768px;
 $large:  1224px;
 
+/* mixins */
 @mixin breakpoint($breakpoint) {
     @media screen and (min-width: $breakpoint), print {
         @content;
     }
+}
+
+/* functions */
+@function image-path($image){
+  @return '../assets/images/' + $image
 }
