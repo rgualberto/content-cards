@@ -8,15 +8,14 @@ class TodoList extends React.Component {
         });
   }
 
-  save() {
-    // this.props.saveFuelSavings(this.props.fuelSavings);
-  }
-
   render() {
     let todoItems = this.buildTodoItems();
 
     return (
-      <div className="card-list">{todoItems}</div>
+      <div className="card-list">
+        {todoItems}
+        <TodoCard cardData={{addCard: true}} />
+      </div>
     );
   }
 }

@@ -20,6 +20,30 @@
         box-shadow: 0px 3px 13px 0px rgba($black, 0.62);
     }
 
+    .card__container--add-card {
+        position: relative;
+        padding: 0;
+        background: $gray;
+        color: $white;
+        text-shadow: -1px -1px 0 rgba($black, 0.5), 1px -1px 0 rgba($black, 0.5), -1px 1px 0 rgba($black, 0.5), 1px 1px 0 rgba($black, 0.5);
+        cursor: pointer;
+
+        &:before {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+            font-size: 91px;
+            text-align: center;
+            content: '+';
+        }
+    }
+
+
         .card__title {
             margin: 0 0 15px;
             padding: 10px 20px 0;

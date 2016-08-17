@@ -1,24 +1,45 @@
 import React, {PropTypes} from 'react';
 
 class TodoCard extends React.Component {
-  render() {
+  renderAddCard () {
+    return (
+      <div className="card__container card__container--add-card"></div>
+    );
+  }
+
+  renderContentCard () {
     const {cardData} = this.props;
     const imageClass = "card__image card__image--" + cardData.image;
 
     return (
-      <div className="card">
-        <div className="card__container">
-          <div className={imageClass}></div>
-          <h2 className="card__title">{cardData.title}</h2>
-          <div className="card__content">
-            <ul>
-              {cardData.todos.map(function(todo, i) {
-                return <li key={i}>{todo}</li>;
-              })}
-            </ul>
-          </div>
+      <div className="card__container">
+        <div className={imageClass}></div>
+        <h2 className="card__title">{cardData.title}</h2>
+        <div className="card__content">
+          <ul>
+            {cardData.todos.map(function(todo, i) {
+              return <li key={i}>{todo}</li>;
+            })}
+          </ul>
         </div>
       </div>
+    );
+  }
+
+  getCardContent () {
+    if (this.props.cardData.hasOwnProperty('addCard') && this.props.cardData.addCard) {
+      return this.renderAddCard();
+    }
+    else {
+      return this.renderContentCard();
+    }
+  }
+
+  render () {
+    const cardRender = this.getCardContent();
+
+    return (
+      <div className="card">{cardRender}</div>
     );
   }
 }
