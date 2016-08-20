@@ -1,9 +1,14 @@
 import React, {PropTypes} from 'react';
+import {browserHistory} from 'react-router';
 
 class TodoCard extends React.Component {
+  displayForm  () {
+    browserHistory.push('/add-card');
+  }
+
   renderAddCard () {
     return (
-      <div className="card__container card__container--add-card"></div>
+      <div className="card__container card__container--add-card" onClick={this.displayForm}></div>
     );
   }
 

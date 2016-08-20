@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-// import {Link} from 'react-router';
+import {bindActionCreators} from 'redux';
 import TodoList from '../components/TodoList';
 
 export const TodoPage = (props) => {
@@ -13,25 +13,13 @@ export const TodoPage = (props) => {
 };
 
 TodoPage.propTypes = {
-  // actions: PropTypes.object.isRequired,
   todoCards: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    todoCards: state.todos
+    todoCards: state.todos.todoCards
   };
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(actions, dispatch)
-//   };
-// }
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(FuelSavingsPage);
 
 export default connect(mapStateToProps)(TodoPage);
