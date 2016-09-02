@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import {reduxForm, Field} from 'redux-form';
+import RichTextEditor from 'react-rte';
 
 const renderInput = (props) => {
   return (
@@ -12,9 +13,14 @@ const renderInput = (props) => {
   );
 }
 
+
 class AddCardForm extends React.Component {
   render() {
-    const { handleSubmit } = this.props;
+    const {
+      handleSubmit,
+      editorValue,
+      editorChange
+    } = this.props;
 
     return (
       <form onSubmit={handleSubmit}>
@@ -39,6 +45,11 @@ class AddCardForm extends React.Component {
             placeholder="Image"
         />
         <br/>
+        <RichTextEditor
+            value={editorValue}
+            onChange={editorChange}
+        />
+        <br/>
         <button type="submit">Submit</button>
       </form>
     );
@@ -46,7 +57,9 @@ class AddCardForm extends React.Component {
 }
 
 AddCardForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  editorValue: PropTypes.object.isRequired,
+  editorChange: PropTypes.func.isRequired
 }
 
 AddCardForm = reduxForm({

@@ -1,3 +1,5 @@
+import {createEmptyValue} from 'react-rte';
+
 export default {
   todoCards: [
     {
@@ -17,5 +19,6 @@ export default {
       todos: ['I like', 'to eat', 'food with', 'several hot', 'peppers and', 'beans'],
       image: 'stock-3'
     }
-  ]
+  ],
+  editorValue: createEmptyValue()
 };

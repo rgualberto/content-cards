@@ -6,7 +6,11 @@ import * as actions from '../actions/TodoActions';
 import AddCardForm from '../components/AddCardForm';
 
 export const AddCardPage = (props) => {
-  const submitNewCard = (cardData) => {
+  const submitNewCard = (cardData, event) => {
+    // add editor value to cardData
+    cardData.todo = props.editorValue.toString('html');
+
+    // save cardData
     props.actions.saveNewCard(cardData);
     browserHistory.push('/');
   };
@@ -15,6 +19,8 @@ export const AddCardPage = (props) => {
     <div className="page-main">
       <h1>Add a Card</h1>
       <AddCardForm
+        editorValue={props.editorValue}
+        editorChange={props.actions.updateEditor}
         onSubmit={submitNewCard}
       />
     </div>
@@ -23,10 +29,13 @@ export const AddCardPage = (props) => {
 
 AddCardPage.propTypes = {
   actions: PropTypes.object.isRequired,
+  editorValue: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    editorValue: state.todos.editorValue
+  };
 }
 
 function mapDispatchToProps(dispatch) {
