@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 
 import PlanalApp from './components/PlanalApp';
 import TodoPage from './containers/TodoPage';
-import AddCardPage from './containers/AddCardPage.js';
+import AddCardPage from './containers/AddCardPage';
 // import NotFoundPage from './components/NotFoundPage.js';
 
 export default (
