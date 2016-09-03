@@ -5,7 +5,7 @@ import RichTextEditor from 'react-rte';
 const renderInput = (props) => {
   return (
     <div>
-      <input {...props.input}/>
+      <input {...props.input} className="text-box" />
       {props.touched &&
        props.error &&
        <span className="error">{props.error}</span>}
@@ -30,20 +30,20 @@ class AddCardForm extends React.Component {
             type="text"
             placeholder="Title"
         />
-        <br/>
         <Field
             name="image"
             component={renderInput}
             type="text"
             placeholder="Image"
         />
-        <br/>
         <RichTextEditor
             value={editorValue}
             onChange={editorChange}
+            className="text-box text-box--editor"
         />
-        <br/>
-        <button type="submit">Submit</button>
+        <div>
+          <button type="submit" className="button">Add It!</button>
+        </div>
       </form>
     );
   }

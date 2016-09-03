@@ -16,7 +16,7 @@ export const AddCardPage = (props) => {
   };
 
   return (
-    <div className="page-main">
+    <div className="page-main page-main--center">
       <h1>Add a Card</h1>
       <AddCardForm
         editorValue={props.editorValue}
