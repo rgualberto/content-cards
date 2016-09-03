@@ -9,8 +9,7 @@ export default function todosReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_CARD:
       newState = objectAssign({}, state);
-      action.cardData.todos = [action.cardData.todo];
-      newState.todoCards.push(action.cardData);
+      newState.contentCards.push(action.cardData);
 
       // reset editor value
       newState.editorValue = createEmptyValue();

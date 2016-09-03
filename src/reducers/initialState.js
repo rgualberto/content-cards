@@ -1,22 +1,22 @@
 import {createEmptyValue} from 'react-rte';
 
 export default {
-  todoCards: [
+  contentCards: [
     {
       title: 'First Card',
-      todos: ['Go to work', 'Come back Home', 'Go to sleep'],
+      content: 'Go to work',
       image: 'stock-1'
     },
 
     {
       title: 'Second Guy',
-      todos: ['Somewhere', 'Over the rainbow'],
+      content: 'Somewhere',
       image: 'stock-2'
     },
 
     {
       title: 'Third Dude',
-      todos: ['I like', 'to eat', 'food with', 'several hot', 'peppers and', 'beans'],
+      content: 'I like',
       image: 'stock-3'
     }
   ],

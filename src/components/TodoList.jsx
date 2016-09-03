@@ -2,18 +2,18 @@ import React, {PropTypes} from 'react';
 import TodoCard from './TodoCard';
 
 class TodoList extends React.Component {
-  buildTodoItems() {
-    return this.props.todoCards.map(function(card, i) {
+  buildCardItems() {
+    return this.props.contentCards.map(function(card, i) {
           return <TodoCard cardData={card} key={i}/>;
         });
   }
 
   render() {
-    let todoItems = this.buildTodoItems();
+    let cardItems = this.buildCardItems();
 
     return (
       <div className="card-list">
-        {todoItems}
+        {cardItems}
         <TodoCard cardData={{addCard: true}} />
       </div>
     );
@@ -21,7 +21,7 @@ class TodoList extends React.Component {
 }
 
 TodoList.propTypes = {
-  todoCards: PropTypes.array.isRequired
+  contentCards: PropTypes.array.isRequired
 };
 
 export default TodoList;

@@ -8,7 +8,7 @@ import AddCardForm from '../components/AddCardForm';
 export const AddCardPage = (props) => {
   const submitNewCard = (cardData, event) => {
     // add editor value to cardData
-    cardData.todo = props.editorValue.toString('html');
+    cardData.content = props.editorValue.toString('html');
 
     // save cardData
     props.actions.saveNewCard(cardData);
@@ -34,7 +34,7 @@ AddCardPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    editorValue: state.todos.editorValue
+    editorValue: state.allContent.editorValue
   };
 }
 

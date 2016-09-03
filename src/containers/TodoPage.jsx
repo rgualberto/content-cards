@@ -7,18 +7,18 @@ export const TodoPage = (props) => {
   return (
     <div className="page-main">
       <h1>Todo Stuff Listed!</h1>
-      <TodoList todoCards={props.todoCards} />
+      <TodoList contentCards={props.contentCards} />
     </div>
   );
 };
 
 TodoPage.propTypes = {
-  todoCards: PropTypes.array.isRequired
+  contentCards: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    todoCards: state.todos.todoCards
+    contentCards: state.allContent.contentCards
   };
 }
 
