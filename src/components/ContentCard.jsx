@@ -21,9 +21,7 @@ class ContentCard extends React.Component {
         <div className={imageClass}></div>
         <h2 className="card__title">{cardData.title}</h2>
         <div className="card__content">
-          <ul>
-            {cardData.content}
-          </ul>
+          <div dangerouslySetInnerHTML={{__html: cardData.content}} />
         </div>
       </div>
     );
