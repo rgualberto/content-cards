@@ -1,10 +1,10 @@
 import React, {PropTypes} from 'react';
-import TodoCard from './TodoCard';
+import ContentCard from './ContentCard';
 
-class TodoList extends React.Component {
+class ContentList extends React.Component {
   buildCardItems() {
     return this.props.contentCards.map(function(card, i) {
-          return <TodoCard cardData={card} key={i}/>;
+          return <ContentCard cardData={card} key={i}/>;
         });
   }
 
@@ -14,14 +14,14 @@ class TodoList extends React.Component {
     return (
       <div className="card-list">
         {cardItems}
-        <TodoCard cardData={{addCard: true}} />
+        <ContentCard cardData={{addCard: true}} />
       </div>
     );
   }
 }
 
-TodoList.propTypes = {
+ContentList.propTypes = {
   contentCards: PropTypes.array.isRequired
 };
 
-export default TodoList;
+export default ContentList;

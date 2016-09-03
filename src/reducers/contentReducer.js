@@ -3,7 +3,7 @@ import objectAssign from 'object-assign';
 import initialState from './initialState';
 import {createEmptyValue} from 'react-rte';
 
-export default function todosReducer(state = initialState, action) {
+export default function contentReducer(state = initialState, action) {
   let newState;
 
   switch (action.type) {

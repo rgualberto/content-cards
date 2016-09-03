@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {browserHistory} from 'react-router';
 
-class TodoCard extends React.Component {
+class ContentCard extends React.Component {
   displayForm  () {
     browserHistory.push('/add-card');
   }
@@ -47,8 +47,8 @@ class TodoCard extends React.Component {
   }
 }
 
-TodoCard.propTypes = {
+ContentCard.propTypes = {
   cardData: PropTypes.object.isRequired
 };
 
-export default TodoCard;
+export default ContentCard;

@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
-import * as actions from '../actions/TodoActions';
+import * as actions from '../actions/ContentActions';
 import AddCardForm from '../components/AddCardForm';
 
 export const AddCardPage = (props) => {

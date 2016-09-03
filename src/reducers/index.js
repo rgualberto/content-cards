@@ -1,6 +1,6 @@
 // Set up your root reducer here...
 import { combineReducers } from 'redux';
-import allContent from './todosReducer';
+import allContent from './contentReducer';
 import {reducer as formReducer} from 'redux-form';
 
 //CHECK WHAT THIS GUY IS DOING

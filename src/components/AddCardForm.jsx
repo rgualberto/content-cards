@@ -32,13 +32,6 @@ class AddCardForm extends React.Component {
         />
         <br/>
         <Field
-            name="todo"
-            component={renderInput}
-            type="text"
-            placeholder="ToDo"
-        />
-        <br/>
-        <Field
             name="image"
             component={renderInput}
             type="text"

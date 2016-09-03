@@ -1,18 +1,18 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import TodoList from '../components/TodoList';
+import ContentList from '../components/ContentList';
 
-export const TodoPage = (props) => {
+export const ContentPage = (props) => {
   return (
     <div className="page-main">
-      <h1>Todo Stuff Listed!</h1>
-      <TodoList contentCards={props.contentCards} />
+      <h1>Content Cards!</h1>
+      <ContentList contentCards={props.contentCards} />
     </div>
   );
 };
 
-TodoPage.propTypes = {
+ContentPage.propTypes = {
   contentCards: PropTypes.array.isRequired
 };
 
@@ -22,4 +22,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(TodoPage);
+export default connect(mapStateToProps)(ContentPage);
