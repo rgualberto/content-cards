@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import {reduxForm, Field} from 'redux-form';
 import RichTextEditor from 'react-rte';
+import Modal from 'react-modal';
 
 const renderInput = (props) => {
   return (
@@ -14,7 +15,22 @@ const renderInput = (props) => {
 }
 
 
+
 class AddCardForm extends React.Component {
+  constructor() {
+    super(...arguments);
+
+    this.openDialog = this.openDialog.bind(this);
+
+    this.state = {
+      dialogIsOpen: false
+    };
+  }
+
+  openDialog() {
+    this.setState({dialogIsOpen: true});
+  }
+
   render() {
     const {
       handleSubmit,
@@ -44,6 +60,13 @@ class AddCardForm extends React.Component {
         <div>
           <button type="submit" className="button">Add It!</button>
         </div>
+
+        <Modal
+          isOpen={this.state.dialogIsOpen}
+          className="dialog"
+        >
+          <h2>Stuff!</h2>
+        </Modal>
       </form>
     );
   }
