@@ -12,7 +12,7 @@ class AddCardFormComp extends React.Component {
 
     this.state = {
       dialogIsOpen: false,
-      selectedImage: ''
+      selectedImage: this.props.contentImages[0].value
     };
   }
 
@@ -22,8 +22,7 @@ class AddCardFormComp extends React.Component {
     this.props.dispatch(dispatchAction);
   }
 
-  openDialog(event) {
-    event.target.blur();
+  openDialog() {
     this.setState({dialogIsOpen: true});
   }
 
@@ -50,17 +49,20 @@ class AddCardFormComp extends React.Component {
     return (
       <form onSubmit={handleSubmit}>
         <Field
+            name="image"
+            component={RenderInput}
+            type="hidden"
+        />
+        <p>Click image to change</p>
+        <div
+          className={"image-box image-box--" + this.state.selectedImage}
+          onClick={this.openDialog.bind(this)}
+        />
+        <Field
             name="title"
             component={RenderInput}
             type="text"
             placeholder="Title"
-        />
-        <Field
-            name="image"
-            component={RenderInput}
-            type="text"
-            placeholder="Image"
-            onFocus={this.openDialog.bind(this)}
         />
         <RichTextEditor
             value={editorValue}
