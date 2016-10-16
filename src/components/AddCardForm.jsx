@@ -14,9 +14,7 @@ const renderInput = (props) => {
   );
 }
 
-
-
-class AddCardForm extends React.Component {
+class AddCardFormComp extends React.Component {
   constructor() {
     super(...arguments);
 
@@ -27,8 +25,13 @@ class AddCardForm extends React.Component {
     };
   }
 
-  openDialog() {
+  openDialog(event) {
+    event.target.blur();
     this.setState({dialogIsOpen: true});
+  }
+
+  closeDialog() {
+    this.setState({dialogIsOpen: false});
   }
 
   render() {
@@ -51,6 +54,7 @@ class AddCardForm extends React.Component {
             component={renderInput}
             type="text"
             placeholder="Image"
+            onClick={this.openDialog.bind(this)}
         />
         <RichTextEditor
             value={editorValue}
@@ -66,20 +70,21 @@ class AddCardForm extends React.Component {
           className="dialog"
         >
           <h2>Stuff!</h2>
+          <button onClick={this.closeDialog.bind(this)}>close</button>
         </Modal>
       </form>
     );
   }
 }
 
-AddCardForm.propTypes = {
+AddCardFormComp.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   editorValue: PropTypes.object.isRequired,
   editorChange: PropTypes.func.isRequired
-}
+};
 
-AddCardForm = reduxForm({
+const AddCardForm = reduxForm({
   form: 'add-card'
-})(AddCardForm);
+})(AddCardFormComp);
 
 export default AddCardForm;
