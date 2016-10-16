@@ -2,17 +2,7 @@ import React, {PropTypes} from 'react';
 import {reduxForm, Field} from 'redux-form';
 import RichTextEditor from 'react-rte';
 import Modal from 'react-modal';
-
-const renderInput = (props) => {
-  return (
-    <div>
-      <input {...props.input} className="text-box" />
-      {props.touched &&
-       props.error &&
-       <span className="error">{props.error}</span>}
-    </div>
-  );
-}
+import RenderInput from './RenderInput.jsx';
 
 class AddCardFormComp extends React.Component {
   constructor() {
@@ -45,13 +35,13 @@ class AddCardFormComp extends React.Component {
       <form onSubmit={handleSubmit}>
         <Field
             name="title"
-            component={renderInput}
+            component={RenderInput}
             type="text"
             placeholder="Title"
         />
         <Field
             name="image"
-            component={renderInput}
+            component={RenderInput}
             type="text"
             placeholder="Image"
             onClick={this.openDialog.bind(this)}

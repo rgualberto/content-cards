@@ -5,5 +5,5 @@ export function saveNewCard(cardData) {
 }
 
 export function updateEditor(value) {
-    return {type: types.UPDATE_EDITOR, value}
+  return {type: types.UPDATE_EDITOR, value};
 }

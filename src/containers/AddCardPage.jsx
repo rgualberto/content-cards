@@ -3,10 +3,10 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
 import * as actions from '../actions/ContentActions';
-import AddCardForm from '../components/AddCardForm';
+import AddCardForm from '../components/AddCardForm.jsx';
 
 export const AddCardPage = (props) => {
-  const submitNewCard = (cardData, event) => {
+  const submitNewCard = (cardData) => {
     // add editor value to cardData
     cardData.content = props.editorValue.toString('html');
 

@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import ContentCard from './ContentCard';
+import ContentCard from './ContentCard.jsx';
 
 class ContentList extends React.Component {
   buildCardItems() {

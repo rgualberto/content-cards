@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import PlanalApp from './components/PlanalApp';
-import ContentPage from './containers/ContentPage';
-import AddCardPage from './containers/AddCardPage';
+import PlanalApp from './components/PlanalApp.jsx';
+import ContentPage from './containers/ContentPage.jsx';
+import AddCardPage from './containers/AddCardPage.jsx';
 // import NotFoundPage from './components/NotFoundPage.js';
 
 export default (

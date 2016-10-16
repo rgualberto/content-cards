@@ -8,7 +8,7 @@ class ContentCard extends React.Component {
 
   renderAddCard () {
     return (
-      <div className="card__container card__container--add-card" onClick={this.displayForm}></div>
+      <div className="card__container card__container--add-card" onClick={this.displayForm} />
     );
   }
 
@@ -18,7 +18,7 @@ class ContentCard extends React.Component {
 
     return (
       <div className="card__container">
-        <div className={imageClass}></div>
+        <div className={imageClass} />
         <h2 className="card__title">{cardData.title}</h2>
         <div className="card__content">
           <div dangerouslySetInnerHTML={{__html: cardData.content}} />
