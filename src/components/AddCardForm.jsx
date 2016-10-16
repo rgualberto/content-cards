@@ -11,8 +11,15 @@ class AddCardFormComp extends React.Component {
     this.openDialog = this.openDialog.bind(this);
 
     this.state = {
-      dialogIsOpen: false
+      dialogIsOpen: false,
+      selectedImage: ''
     };
+  }
+
+  changeInputValue(field, value) {
+    const dispatchAction = this.props.change(field, value);
+
+    this.props.dispatch(dispatchAction);
   }
 
   openDialog(event) {
@@ -22,13 +29,22 @@ class AddCardFormComp extends React.Component {
 
   closeDialog() {
     this.setState({dialogIsOpen: false});
+    this.changeInputValue('image', this.state.selectedImage);
+  }
+
+  handleImageSelection(event) {
+    this.setState({
+      ...this.state,
+      selectedImage: event.target.value
+    });
   }
 
   render() {
     const {
       handleSubmit,
       editorValue,
-      editorChange
+      editorChange,
+      contentImages
     } = this.props;
 
     return (
@@ -44,7 +60,7 @@ class AddCardFormComp extends React.Component {
             component={RenderInput}
             type="text"
             placeholder="Image"
-            onClick={this.openDialog.bind(this)}
+            onFocus={this.openDialog.bind(this)}
         />
         <RichTextEditor
             value={editorValue}
@@ -59,8 +75,27 @@ class AddCardFormComp extends React.Component {
           isOpen={this.state.dialogIsOpen}
           className="dialog"
         >
-          <h2>Stuff!</h2>
-          <button onClick={this.closeDialog.bind(this)}>close</button>
+          <h2>Select an Image</h2>
+          <ul>
+            {
+              contentImages.map((contentImage, index) => {
+                return (
+                  <li key={index}>
+                    <input
+                      name="contentImages"
+                      type="radio"
+                      id={'content' + index}
+                      value={contentImage.value}
+                      onChange={this.handleImageSelection.bind(this)}
+                      checked={this.state.selectedImage === contentImage.value}
+                    />
+                  <label htmlFor={'content' + index}>{contentImage.displayName}</label>
+                  </li>
+                );
+              })
+            }
+          </ul>
+          <button onClick={this.closeDialog.bind(this)}>submit</button>
         </Modal>
       </form>
     );
@@ -70,7 +105,10 @@ class AddCardFormComp extends React.Component {
 AddCardFormComp.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   editorValue: PropTypes.object.isRequired,
-  editorChange: PropTypes.func.isRequired
+  editorChange: PropTypes.func.isRequired,
+  contentImages: PropTypes.array.isRequired,
+  change: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const AddCardForm = reduxForm({

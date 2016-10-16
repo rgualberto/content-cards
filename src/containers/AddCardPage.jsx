@@ -21,6 +21,7 @@ export const AddCardPage = (props) => {
       <AddCardForm
         editorValue={props.editorValue}
         editorChange={props.actions.updateEditor}
+        contentImages={props.contentImages}
         onSubmit={submitNewCard}
       />
     </div>
@@ -29,12 +30,14 @@ export const AddCardPage = (props) => {
 
 AddCardPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  editorValue: PropTypes.object.isRequired
+  editorValue: PropTypes.object.isRequired,
+  contentImages: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    editorValue: state.allContent.editorValue
+    editorValue: state.allContent.editorValue,
+    contentImages: state.allContent.contentImages
   };
 }
 
