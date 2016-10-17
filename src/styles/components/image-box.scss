@@ -7,20 +7,16 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    border-radius: 5px;
+    cursor: pointer;
 
     @include breakpoint($medium) {
         width: 410px;
     }
 }
 
-.image-box--stock-1 {
-    background-image: url(image-path('stock-1.jpg'));
-}
-
-.image-box--stock-2 {
-    background-image: url(image-path('stock-2.jpg'));
-}
-
-.image-box--stock-3 {
-    background-image: url(image-path('stock-3.jpg'));
+@for $i from 1 through 6 {
+    .image-box--stock-#{$i} {
+        background-image: url(image-path('stock-'+ $i +'.jpg'));
+    }
 }

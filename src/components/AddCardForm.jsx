@@ -76,28 +76,35 @@ class AddCardFormComp extends React.Component {
         <Modal
           isOpen={this.state.dialogIsOpen}
           className="dialog"
+          style={{overlay: {overflow: 'scroll'}}}
         >
           <h2>Select an Image</h2>
-          <ul>
+          <ul className="image-list">
             {
               contentImages.map((contentImage, index) => {
                 return (
-                  <li key={index}>
+                  <li key={index} className="image-list__item">
                     <input
                       name="contentImages"
+                      className="image-list__item-input"
                       type="radio"
                       id={'content' + index}
                       value={contentImage.value}
                       onChange={this.handleImageSelection.bind(this)}
                       checked={this.state.selectedImage === contentImage.value}
                     />
-                  <label htmlFor={'content' + index}>{contentImage.displayName}</label>
+                    <label htmlFor={'content' + index} className="image-list__item-label">
+                      <div
+                        className={"image-box image-box--" + contentImage.value}
+                      />
+                    <p>{contentImage.displayName}</p>
+                    </label>
                   </li>
                 );
               })
             }
           </ul>
-          <button onClick={this.closeDialog.bind(this)}>submit</button>
+          <button onClick={this.closeDialog.bind(this)} className="button">submit</button>
         </Modal>
       </form>
     );

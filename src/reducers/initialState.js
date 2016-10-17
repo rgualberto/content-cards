@@ -33,6 +33,18 @@ export default {
     {
       displayName: 'Stock 3',
       value: 'stock-3'
+    },
+    {
+      displayName: 'Stock 4',
+      value: 'stock-4'
+    },
+    {
+      displayName: 'Stock 5',
+      value: 'stock-5'
+    },
+    {
+      displayName: 'Stock 6',
+      value: 'stock-6'
     }
   ]
 };

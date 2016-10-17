@@ -60,16 +60,10 @@
             background-position: center;
         }
 
-        .card__image--stock-1 {
-            background-image: url(image-path('stock-1.jpg'));
-        }
-
-        .card__image--stock-2 {
-            background-image: url(image-path('stock-2.jpg'));
-        }
-
-        .card__image--stock-3 {
-            background-image: url(image-path('stock-3.jpg'));
+        @for $i from 1 through 6 {
+            .card__image--stock-#{$i} {
+                background-image: url(image-path('stock-'+ $i +'.jpg'));
+            }
         }
 
 .card--plus {

@@ -9,9 +9,5 @@
     border: 1px solid $gray;
     border-radius: 5px;
     box-sizing: border-box;
-
-    @include breakpoint ($medium) {
-        width: 600px;
-        margin-left: -300px;
-    }
+    text-align: center;
 }

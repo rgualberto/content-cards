@@ -3,6 +3,15 @@ body {
     margin: 0;
     font-family: 'Raleway', sans-serif;
     background: $very-light-gray;
+
+    &.ReactModal__Body--open {
+      overflow: hidden;
+    }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 .page-main {

@@ -1,0 +1,32 @@
+.image-list {
+    list-style: none;
+}
+
+    .image-list__item {
+      display: block;
+      margin: 10px;
+
+        @include breakpoint($medium) {
+            display: inline-block;
+        }
+
+        .image-box {
+          border: 6px solid transparent;
+
+            @include breakpoint($medium) {
+              width: 365px;
+            }
+        }
+
+        .image-list__item-input {
+          display: none;
+
+            &:checked + .image-list__item-label .image-box {
+              border-color: $bright-green;
+            }
+        }
+    }
+
+        .image-list__item-label {
+          cursor: pointer;
+        }
