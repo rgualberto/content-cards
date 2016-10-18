@@ -12,7 +12,8 @@ class AddCardFormComp extends React.Component {
 
     this.state = {
       dialogIsOpen: false,
-      selectedImage: this.props.contentImages[0].value
+      selectedImage: this.props.contentImages[0].value,
+      initialImage: this.props.contentImages[0].value
     };
   }
 
@@ -28,7 +29,27 @@ class AddCardFormComp extends React.Component {
 
   closeDialog() {
     this.setState({dialogIsOpen: false});
+  }
+
+  onDialogOpen() {
+    this.refs.dialogClose.focus();
+    this.setState({
+      ...this.state,
+      initialImage: this.state.selectedImage
+    });
+  }
+
+  saveImageSelection() {
     this.changeInputValue('image', this.state.selectedImage);
+    this.closeDialog();
+  }
+
+  cancelImageSelection() {
+    this.setState({
+      ...this.state,
+      selectedImage: this.state.initialImage
+    });
+    this.closeDialog();
   }
 
   handleImageSelection(event) {
@@ -75,10 +96,12 @@ class AddCardFormComp extends React.Component {
 
         <Modal
           isOpen={this.state.dialogIsOpen}
+          onAfterOpen={this.onDialogOpen.bind(this)}
           className="dialog"
           style={{overlay: {overflow: 'scroll'}}}
         >
-          <h2>Select an Image</h2>
+          <button ref="dialogClose" className="dialog__close" onClick={this.cancelImageSelection.bind(this)}>X</button>
+          <h2 className="dialog__title">Select an Image</h2>
           <ul className="image-list">
             {
               contentImages.map((contentImage, index) => {
@@ -104,7 +127,7 @@ class AddCardFormComp extends React.Component {
               })
             }
           </ul>
-          <button onClick={this.closeDialog.bind(this)} className="button">submit</button>
+          <button onClick={this.saveImageSelection.bind(this)} className="button">submit</button>
         </Modal>
       </form>
     );
