@@ -3,18 +3,21 @@ import {createEmptyValue} from 'react-rte';
 export default {
   contentCards: [
     {
+      id: 1477969913923,
       title: 'First Card',
       content: 'Go to work',
       image: 'stock-1'
     },
 
     {
+      id: 1477969942186,
       title: 'Second Guy',
       content: 'Somewhere',
       image: 'stock-2'
     },
 
     {
+      id: 1477969972744,
       title: 'Third Dude',
       content: 'I like',
       image: 'stock-3'

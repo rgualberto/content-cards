@@ -3,8 +3,16 @@ import ContentCard from './ContentCard.jsx';
 
 class ContentList extends React.Component {
   buildCardItems() {
+    const removeCard = this.props.removeCard;
+
     return this.props.contentCards.map(function(card, i) {
-          return <ContentCard cardData={card} key={i}/>;
+          return (
+            <ContentCard
+              cardData={card}
+              key={i}
+              removeCard={removeCard}
+            />
+          );
         });
   }
 
@@ -21,6 +29,7 @@ class ContentList extends React.Component {
 }
 
 ContentList.propTypes = {
+  removeCard: PropTypes.func.isRequired,
   contentCards: PropTypes.array.isRequired
 };
 
