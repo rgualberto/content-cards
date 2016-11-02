@@ -9,6 +9,7 @@ class AddCardFormComp extends React.Component {
     super(...arguments);
 
     this.openDialog = this.openDialog.bind(this);
+    this.triggerCloseDialog = this.triggerCloseDialog.bind(this);
 
     this.state = {
       dialogIsOpen: false,
@@ -25,10 +26,20 @@ class AddCardFormComp extends React.Component {
 
   openDialog() {
     this.setState({dialogIsOpen: true});
+
+    window.addEventListener('keydown', this.triggerCloseDialog);
   }
 
   closeDialog() {
     this.setState({dialogIsOpen: false});
+  }
+
+  triggerCloseDialog(event) {
+    if (event.key === 'Escape') {
+      this.closeDialog();
+
+      window.removeEventListener('keydown', this.triggerCloseDialog);
+    }
   }
 
   onDialogOpen() {
