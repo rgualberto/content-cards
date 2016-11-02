@@ -16,6 +16,9 @@ class AddCardFormComp extends React.Component {
       selectedImage: this.props.contentImages[0].value,
       initialImage: this.props.contentImages[0].value
     };
+
+    // set initial values
+    this.changeInputValue('image', this.state.selectedImage);
   }
 
   changeInputValue(field, value) {
