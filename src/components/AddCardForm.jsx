@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, {PropTypes} from 'react';
 import {reduxForm, Field} from 'redux-form';
 import RichTextEditor from 'react-rte';
@@ -73,16 +74,40 @@ class AddCardFormComp extends React.Component {
     });
   }
 
+  submitForm(event) {
+    if (this.validate(`#${event.currentTarget.id}`)) {
+      this.props.handleSubmit(event);
+    } else {
+      event.preventDefault();
+    }
+  }
+
+  validate(formSelector) {
+    const requiredFields = ['image', 'title'],
+          errors = _.compact(_.map(requiredFields, fieldName => {
+            let field = document.querySelector(`${formSelector} [name="${fieldName}"]`);
+
+            if (_.isEmpty(field.value)) {
+              field.classList.add('error');
+
+              return true;
+            }
+
+            return false;
+          }));
+
+    return _.isEmpty(errors);
+  }
+
   render() {
     const {
-      handleSubmit,
       editorValue,
       editorChange,
       contentImages
     } = this.props;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={this.submitForm.bind(this)} id="add-card-form">
         <Field
             name="image"
             component={RenderInput}
@@ -97,7 +122,7 @@ class AddCardFormComp extends React.Component {
             name="title"
             component={RenderInput}
             type="text"
-            placeholder="Title"
+            placeholder="Title*"
         />
         <RichTextEditor
             value={editorValue}
