@@ -1,6 +1,7 @@
 import {createEmptyValue} from 'react-rte';
 
 export default {
+  isLoaded: false,
   contentCards: [
     {
       id: 1477969913923,

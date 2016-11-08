@@ -1,5 +1,9 @@
 import * as types from '../constants/actionTypes';
 
+export function loadContent() {
+  return {type: types.LOAD_CONTENT};
+}
+
 export function saveNewCard(cardData) {
   return {type: types.ADD_CARD, cardData};
 }

@@ -4,26 +4,36 @@ import {connect} from 'react-redux';
 import ContentList from '../components/ContentList.jsx';
 import * as actions from '../actions/ContentActions';
 
-export const ContentPage = (props) => {
-  return (
-    <div className="page-main">
-      <h1>Content Cards!</h1>
-      <ContentList
-        removeCard={props.actions.removeCard}
-        contentCards={props.contentCards}
-      />
-    </div>
-  );
-};
+export class ContentPage extends React.Component {
+  componentWillMount() {
+    if (!this.props.isLoaded) {
+      this.props.actions.loadContent();
+    }
+  }
+
+  render() {
+    return (
+      <div className="page-main">
+        <h1>Content Cards!</h1>
+        <ContentList
+          removeCard={this.props.actions.removeCard}
+          contentCards={this.props.contentCards}
+        />
+      </div>
+    );
+  }
+}
 
 ContentPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  contentCards: PropTypes.array.isRequired
+  contentCards: PropTypes.array.isRequired,
+  isLoaded: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    contentCards: state.allContent.contentCards
+    contentCards: state.allContent.contentCards,
+    isLoaded: state.allContent.isLoaded
   };
 }
 
