@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, {PropTypes} from 'react';
 import {reduxForm, Field} from 'redux-form';
 import RichTextEditor from 'react-rte';
-import Modal from 'react-modal';
+import ImageModal from './ImageModal.jsx';
 import RenderInput from './RenderInput.jsx';
 
 class AddCardFormComp extends React.Component {
@@ -11,6 +11,10 @@ class AddCardFormComp extends React.Component {
 
     this.openDialog = this.openDialog.bind(this);
     this.triggerCloseDialog = this.triggerCloseDialog.bind(this);
+    this.cancelImageSelection = this.cancelImageSelection.bind(this);
+    this.onDialogOpen = this.onDialogOpen.bind(this);
+    this.handleImageSelection = this.handleImageSelection.bind(this);
+    this.saveImageSelection = this.saveImageSelection.bind(this);
 
     this.state = {
       dialogIsOpen: false,
@@ -47,7 +51,6 @@ class AddCardFormComp extends React.Component {
   }
 
   onDialogOpen() {
-    this.refs.dialogClose.focus();
     this.setState({
       ...this.state,
       initialImage: this.state.selectedImage
@@ -133,41 +136,15 @@ class AddCardFormComp extends React.Component {
           <button type="submit" className="button">Add It!</button>
         </div>
 
-        <Modal
-          isOpen={this.state.dialogIsOpen}
-          onAfterOpen={this.onDialogOpen.bind(this)}
-          className="dialog"
-          style={{overlay: {overflow: 'scroll'}}}
-        >
-          <button ref="dialogClose" className="dialog__close" onClick={this.cancelImageSelection.bind(this)}>X</button>
-          <h2 className="dialog__title">Select an Image</h2>
-          <ul className="image-list">
-            {
-              contentImages.map((contentImage, index) => {
-                return (
-                  <li key={index} className="image-list__item">
-                    <input
-                      name="contentImages"
-                      className="image-list__item-input"
-                      type="radio"
-                      id={'content' + index}
-                      value={contentImage.value}
-                      onChange={this.handleImageSelection.bind(this)}
-                      checked={this.state.selectedImage === contentImage.value}
-                    />
-                    <label htmlFor={'content' + index} className="image-list__item-label">
-                      <div
-                        className={"image-box image-box--" + contentImage.value}
-                      />
-                    <p>{contentImage.displayName}</p>
-                    </label>
-                  </li>
-                );
-              })
-            }
-          </ul>
-          <button onClick={this.saveImageSelection.bind(this)} className="button">submit</button>
-        </Modal>
+        <ImageModal
+          contentImages={contentImages}
+          selectedImage={this.state.selectedImage}
+          dialogIsOpen={this.state.dialogIsOpen}
+          onDialogOpen={this.onDialogOpen}
+          cancelImageSelection={this.cancelImageSelection}
+          handleImageSelection={this.handleImageSelection}
+          saveImageSelection={this.saveImageSelection}
+        />
       </form>
     );
   }
