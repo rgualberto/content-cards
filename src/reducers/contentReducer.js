@@ -13,7 +13,7 @@ import {createEmptyValue} from 'react-rte';
 import {generateUniqueId} from '../utils/idHelper';
 import {saveContent, getContent} from '../utils/contentHelper';
 
-export default function contentReducer(state = initialState, action) {
+export default function contentReducer(state = initialState, action = {}) {
   let newState;
 
   switch (action.type) {
