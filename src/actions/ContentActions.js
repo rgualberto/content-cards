@@ -4,6 +4,14 @@ export function loadContent() {
   return {type: types.LOAD_CONTENT};
 }
 
+export function clearContent() {
+  return {type: types.CLEAR_CONTENT};
+}
+
+export function resetContent() {
+  return {type: types.RESET_CONTENT};
+}
+
 export function saveNewCard(cardData) {
   return {type: types.ADD_CARD, cardData};
 }

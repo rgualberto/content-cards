@@ -11,10 +11,26 @@ export class ContentPage extends React.Component {
     }
   }
 
+  handleClearCards() {
+    if (confirm('Are you sure you want to clear all cards?')) {
+      this.props.actions.clearContent();
+    }
+  }
+
+  handleReset() {
+    if (confirm('Are you sure you want to reset to default?')) {
+      this.props.actions.resetContent();
+    }
+  }
+
   render() {
     return (
       <div className="page-main">
         <h1>Content Cards!</h1>
+        <ul className="inline-list">
+          <li><button type="button" className="text-button" onClick={this.handleClearCards.bind(this)}>Clear All Cards</button></li>
+          <li><button type="button" className="text-button" onClick={this.handleReset.bind(this)}>Reset to Default</button></li>
+        </ul>
         <ContentList
           removeCard={this.props.actions.removeCard}
           contentCards={this.props.contentCards}

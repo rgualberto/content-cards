@@ -3,7 +3,9 @@ import {
   LOAD_CONTENT,
   ADD_CARD,
   REMOVE_CARD,
-  UPDATE_EDITOR
+  UPDATE_EDITOR,
+  CLEAR_CONTENT,
+  RESET_CONTENT
 } from '../constants/actionTypes';
 import objectAssign from 'object-assign';
 import initialState from './initialState';
@@ -20,6 +22,30 @@ export default function contentReducer(state = initialState, action) {
         isLoaded: true,
         ...getContent(state)
       };
+
+    case CLEAR_CONTENT: {
+      const newState = {
+        ...state,
+        contentCards: []
+      };
+
+      // save newState
+      saveContent(newState);
+
+      return newState;
+    }
+
+    case RESET_CONTENT: {
+      const newState = {
+        ...state,
+        contentCards: initialState.contentCards
+      };
+
+      // save newState
+      saveContent(newState);
+
+      return newState;
+    }
 
     case ADD_CARD:
       newState = objectAssign({}, state);
