@@ -25,6 +25,5 @@ describe('<RenderInput />', () => {
 
     expect(wrappedError.length).toEqual(1);
     expect(wrappedError.text()).toEqual(errorText);
-
   });
 });
