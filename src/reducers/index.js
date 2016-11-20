@@ -3,10 +3,10 @@ import allContent from './contentReducer';
 import {reducer as formReducer} from 'redux-form';
 import {routerReducer} from 'react-router-redux';
 
-const rootReducer = combineReducers({
-    allContent,
-    routing: routerReducer,
-    form: formReducer
-});
+export const reducers = {
+  allContent,
+  routing: routerReducer,
+  form: formReducer
+};
 
-export default rootReducer;
+export default combineReducers(reducers);
