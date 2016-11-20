@@ -40,6 +40,14 @@ export class ContentPage extends React.Component {
     });
   }
 
+  handleRemoveCard(cardId) {
+    this.setState({
+      dialogIsOpen: true,
+      dialogMessage: 'Are you sure you want to delete this card?',
+      dialogCallback: _.partial(this.closeDialog, this.props.actions.removeCard.bind(this, cardId))
+    });
+  }
+
   closeDialog(callback, executeCallback) {
     if (executeCallback) {
       callback();
@@ -61,7 +69,7 @@ export class ContentPage extends React.Component {
           <li><button type="button" className="text-button" onClick={this.handleReset.bind(this)}>Reset to Default</button></li>
         </ul>
         <ContentList
-          removeCard={this.props.actions.removeCard}
+          removeCard={this.handleRemoveCard.bind(this)}
           contentCards={this.props.contentCards}
         />
         <ConfirmModal

@@ -13,11 +13,9 @@ class ContentCard extends React.Component {
   }
 
   handleCardRemove () {
-    if (confirm('Confirm Card Deletion')) {
-      const cardId = this.props.cardData.id;
+    const cardId = this.props.cardData.id;
 
-      this.props.removeCard(cardId);
-    }
+    this.props.removeCard(cardId);
   }
 
   renderContentCard () {
