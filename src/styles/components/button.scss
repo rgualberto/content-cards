@@ -8,3 +8,14 @@
     box-shadow: 1px 1px 1px 1px $gray;
     cursor: pointer;
 }
+.button--small {
+  padding: 10px 20px;
+}
+
+.button--green {
+  background: $bright-green;
+}
+
+.button--red {
+  background: $vivid-red;
+}

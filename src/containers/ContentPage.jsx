@@ -1,10 +1,23 @@
 import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import _ from 'lodash';
 import ContentList from '../components/ContentList.jsx';
+import ConfirmModal from '../components/ConfirmModal.jsx';
 import * as actions from '../actions/ContentActions';
 
 export class ContentPage extends React.Component {
+  constructor() {
+    super();
+    this.closeDialog = this.closeDialog.bind(this);
+
+    this.state = {
+      dialogIsOpen: false,
+      dialogMessage: '',
+      dialogCallback: _.noop
+    };
+  }
+
   componentWillMount() {
     if (!this.props.isLoaded) {
       this.props.actions.loadContent();
@@ -12,15 +25,31 @@ export class ContentPage extends React.Component {
   }
 
   handleClearCards() {
-    if (confirm('Are you sure you want to clear all cards?')) {
-      this.props.actions.clearContent();
-    }
+    this.setState({
+      dialogIsOpen: true,
+      dialogMessage: 'Are you sure you want to clear all cards?',
+      dialogCallback: _.partial(this.closeDialog, this.props.actions.clearContent)
+    });
   }
 
   handleReset() {
-    if (confirm('Are you sure you want to reset to default?')) {
-      this.props.actions.resetContent();
+    this.setState({
+      dialogIsOpen: true,
+      dialogMessage: 'Are you sure you want to reset to default?',
+      dialogCallback: _.partial(this.closeDialog, this.props.actions.resetContent)
+    });
+  }
+
+  closeDialog(callback, executeCallback) {
+    if (executeCallback) {
+      callback();
     }
+
+    this.setState({
+      dialogIsOpen: false,
+      dialogMessage: '',
+      dialogCallback: _.noop
+    });
   }
 
   render() {
@@ -34,6 +63,11 @@ export class ContentPage extends React.Component {
         <ContentList
           removeCard={this.props.actions.removeCard}
           contentCards={this.props.contentCards}
+        />
+        <ConfirmModal
+          dialogIsOpen={this.state.dialogIsOpen}
+          confirmMessage={this.state.dialogMessage}
+          closeDialog={this.state.dialogCallback}
         />
       </div>
     );
