@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {browserHistory} from 'react-router';
 import * as actions from '../actions/ContentActions';
 import AddCardForm from '../components/AddCardForm.jsx';
+import {push} from 'react-router-redux';
 
 export const AddCardPage = (props) => {
   const submitNewCard = (cardData) => {
@@ -12,7 +12,7 @@ export const AddCardPage = (props) => {
 
     // save cardData
     props.actions.saveNewCard(cardData);
-    browserHistory.push('/');
+    props.push('/');
   };
 
   return (
@@ -31,7 +31,8 @@ export const AddCardPage = (props) => {
 AddCardPage.propTypes = {
   actions: PropTypes.object.isRequired,
   editorValue: PropTypes.object.isRequired,
-  contentImages: PropTypes.array.isRequired
+  contentImages: PropTypes.array.isRequired,
+  push: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -43,7 +44,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch),
+    push: bindActionCreators(push, dispatch)
   };
 }
 

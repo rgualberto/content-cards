@@ -18,6 +18,7 @@
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist && npm run lint",
     "build": "babel-node tools/build.js && npm run open:dist",
+    "clean-build": "npm run prebuild && babel-node tools/build.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "npm run test -- --coverage && open ./coverage/index.html"
@@ -25,17 +26,18 @@
   "author": "Rodrigo Gualberto",
   "license": "MIT",
   "dependencies": {
+    "gsap": "1.19.0",
+    "history": "2.1.2",
     "object-assign": "4.1.0",
     "react": "15.3.1",
     "react-dom": "15.3.0",
+    "react-modal": "1.4.0",
     "react-redux": "4.4.5",
     "react-router": "2.6.1",
     "react-router-redux": "4.0.5",
-    "redux-form": "6.0.0-rc.2",
-    "redux": "3.5.2",
     "react-rte": "0.5.0",
-    "react-modal": "1.4.0",
-    "gsap": "1.19.0"
+    "redux": "3.5.2",
+    "redux-form": "6.0.0-rc.2"
   },
   "devDependencies": {
     "autoprefixer": "6.4.0",

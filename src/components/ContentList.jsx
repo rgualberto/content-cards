@@ -22,7 +22,7 @@ class ContentList extends React.Component {
     return (
       <div className="card-list">
         {cardItems}
-        <ContentCard cardData={{addCard: true}} />
+        <ContentCard cardData={{addCard: true}} push={this.props.push} />
       </div>
     );
   }
@@ -30,7 +30,8 @@ class ContentList extends React.Component {
 
 ContentList.propTypes = {
   removeCard: PropTypes.func.isRequired,
-  contentCards: PropTypes.array.isRequired
+  contentCards: PropTypes.array.isRequired,
+  push: PropTypes.func.isRequired
 };
 
 export default ContentList;

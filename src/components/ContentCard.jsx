@@ -1,14 +1,13 @@
 import React, {PropTypes} from 'react';
-import {browserHistory} from 'react-router';
 
 class ContentCard extends React.Component {
   displayForm  () {
-    browserHistory.push('/add-card');
+    this.props.push('/add-card');
   }
 
   renderAddCard () {
     return (
-      <div className="card__container card__container--add-card" onClick={this.displayForm} />
+      <div className="card__container card__container--add-card" onClick={this.displayForm.bind(this)} />
     );
   }
 
@@ -54,7 +53,8 @@ class ContentCard extends React.Component {
 
 ContentCard.propTypes = {
   removeCard: PropTypes.func,
-  cardData: PropTypes.object.isRequired
+  cardData: PropTypes.object.isRequired,
+  push: PropTypes.func
 };
 
 export default ContentCard;

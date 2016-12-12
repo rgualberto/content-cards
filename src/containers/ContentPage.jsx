@@ -5,6 +5,7 @@ import _ from 'lodash';
 import ContentList from '../components/ContentList.jsx';
 import ConfirmModal from '../components/ConfirmModal.jsx';
 import * as actions from '../actions/ContentActions';
+import {push} from 'react-router-redux';
 
 export class ContentPage extends React.Component {
   constructor() {
@@ -71,6 +72,7 @@ export class ContentPage extends React.Component {
         <ContentList
           removeCard={this.handleRemoveCard.bind(this)}
           contentCards={this.props.contentCards}
+          push={this.props.push}
         />
         <ConfirmModal
           dialogIsOpen={this.state.dialogIsOpen}
@@ -85,7 +87,8 @@ export class ContentPage extends React.Component {
 ContentPage.propTypes = {
   actions: PropTypes.object.isRequired,
   contentCards: PropTypes.array.isRequired,
-  isLoaded: PropTypes.bool.isRequired
+  isLoaded: PropTypes.bool.isRequired,
+  push: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -97,7 +100,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch),
+    push: bindActionCreators(push, dispatch)
   };
 }
 
