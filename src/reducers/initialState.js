@@ -1,6 +1,6 @@
 import {createEmptyValue} from 'react-rte';
 
-export default {
+export const initialState = {
   isLoaded: false,
   contentCards: [
     {

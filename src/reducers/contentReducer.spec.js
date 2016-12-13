@@ -1,5 +1,5 @@
 import reducer from './contentReducer';
-import initialState from './initialState';
+import {initialState} from './initialState';
 import {saveContent} from '../utils/contentHelper';
 import {createEmptyValue} from 'react-rte';
 import {
