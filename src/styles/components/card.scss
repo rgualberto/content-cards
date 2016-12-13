@@ -66,6 +66,11 @@
 
         .card__content {
             padding: 0 20px;
+            overflow-wrap: break-word;
+
+            pre {
+              overflow-x: scroll;
+            }
         }
 
         .card__image {
